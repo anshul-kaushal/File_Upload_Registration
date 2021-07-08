@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account</title>
+    <style>
+      .nav {
+        display: flex;
+        list-style: none;
+      }
+      li {
+        margin: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="account.html">Account</a></li>
+        <li><a href="logout.html">Logout</a></li>
+      </ul>
+    </nav>
+    <h1>Account</h1>
+    First Name:
+    <input type="text" id="firstname" />
+    <br /><br />
+    Last Name:
+    <input type="text" id="lastname" />
+    <br /><br />
+    <input type="submit" value="Update" id="update" />
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCPUMVOXgiL2Gtofc6axhKUygi7ybzjECo",
+        authDomain: "wddm-120.firebaseapp.com",
+        projectId: "wddm-120",
+        storageBucket: "wddm-120.appspot.com",
+        messagingSenderId: "304346065569",
+        appId: "1:304346065569:web:43d36c14b396a7a9e99ee0",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const firstname = document.getElementById("firstname");
+        const lastname = document.getElementById("lastname");
+        const update = document.getElementById("update");
+
+        const db = firebase.firestore();
+
+        let userRef = null;
+
+        update.addEventListener("click", function () {
+          if (firstname.value && lastname.value) {
+            updateUser(userRef.uid, firstname.value, lastname.value);
+          }
+        });
+
+        function updateUser(uid, first, last) {
+          db.collection("Users")
+            .doc(uid)
+            .update({
+              firstname: first,
+              lastname: last,
+            })
+            .then(function () {
+              console.log("User updated!");
+            })
+            .catch(function (error) {
+              console.error(error);
+            });
+        }
+
+        function getUser(uid) {
+          db.collection("Users")
+            .doc(uid)
+            .get()
+            .then(function (doc) {
+              firstname.value = doc.data().firstname;
+              lastname.value = doc.data().lastname;
+            })
+            .catch(function (error) {
+              console.error(error);
+            });
+        }
+
+        firebase.auth().onAuthStateChanged(function (user) {
+          if (user) {
+            userRef = user;
+            getUser(user.uid);
+          } else {
+            window.location = "login.html";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
