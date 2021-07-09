@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
           .signInWithEmailAndPassword(email.value, password.value)
           .then(function (data) {
             const user = firebase.auth().currentUser;
+            console.log(user)
+            console.log(data)
           })
           .catch(function (error) {
             console.error(error);

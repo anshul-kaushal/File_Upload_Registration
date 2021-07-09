@@ -37,6 +37,11 @@
     <input type="password" id="password" />
     <br /><br />
     <input type="submit" value="Creat Account" id="register" />
+    <div class="alert success">
+      <span class="closebtn">&times;</span>  
+      <strong>Success!</strong> Account Registration Successful.
+    </div>
+    
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
@@ -60,49 +65,7 @@
       firebase.initializeApp(firebaseConfig);
     </script>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const firstname = document.getElementById("firstname");
-        const lastname = document.getElementById("lastname");
-        const email = document.getElementById("email");
-        const password = document.getElementById("password");
-        const register = document.getElementById("register");
-
-        const db = firebase.firestore();
-
-        function addUser(uid, first, last) {
-          db.collection("Users")
-            .doc(uid)
-            .set({
-              firstname: first,
-              lastname: last,
-              user: uid,
-              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-            })
-            .then(function () {
-              console.log("User added to database!");
-            })
-            .catch(function (error) {
-              console.error(error);
-            });
-        }
-
-        register.addEventListener("click", function () {
-          if (email.value && password.value) {
-            firebase
-              .auth()
-              .createUserWithEmailAndPassword(email.value, password.value)
-              .then(function (data) {
-                const user = firebase.auth().currentUser;
-
-                addUser(user.uid, firstname.value, lastname.value);
-              })
-              .catch(function (error) {
-                console.error(error);
-              });
-          }
-        });
-      });
+    <script src="./js/register.js">
     </script>
   </body>
 </html>
