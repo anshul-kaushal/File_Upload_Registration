@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="169" height="69" viewBox="0 0 169 69">
+  <defs>
+    <filter id="Rectangle_83" x="0" y="0" width="169" height="69" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="login" transform="translate(-17 -51)">
+    <g transform="matrix(1, 0, 0, 1, 17, 51)" filter="url(#Rectangle_83)">
+      <rect id="Rectangle_83-2" data-name="Rectangle 83" width="139" height="39" rx="19.5" transform="translate(15 10)" fill="#f3f0e1"/>
+    </g>
+    <text id="LOGIN-2" data-name="LOGIN" transform="translate(102 87)" fill="#232323" font-size="17" font-family="Raleway" font-weight="600"><tspan x="-26.138" y="0">LOGIN</tspan></text>
+  </g>
+</svg>

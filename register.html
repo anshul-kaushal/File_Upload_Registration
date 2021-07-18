@@ -4,44 +4,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/register.css">
+    <script src="https://kit.fontawesome.com/c4dd932847.js" crossorigin="anonymous"></script>
     <title>Create an account</title>
-    <style>
-      .nav {
-        display: flex;
-        list-style: none;
-      }
-      li {
-        margin: 4px;
-      }
-    </style>
   </head>
   <body>
-    <nav>
-      <ul class="nav">
+    <main class="main-body">
+    <nav class="nav">
+      <div class="nav-greeting">image uploader</div>
+      <a href="#" class="toggle" id="toggle-register">
+        <i class="fas fa-bars"></i>
+      </a>
+      <div class="nav-links" id="nav-links-register">
+      <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="register.html">Register</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="index.html">Login</a></li>
       </ul>
+      </div>
     </nav>
-    <h1>Create an account</h1>
-    First Name:
-    <input type="text" id="firstname" />
-    <br /><br />
-    Last Name:
-    <input type="text" id="lastname" />
-    <br /><br />
-    Email:
-    <input type="text" id="email" />
-    <br /><br />
-    password:
-    <input type="password" id="password" />
-    <br /><br />
-    <input type="submit" value="Creat Account" id="register" />
-    <div class="alert success">
-      <span class="closebtn">&times;</span>  
-      <strong>Success!</strong> Account Registration Successful.
+    <form action="" class="register-form">
+    <input type="text" id="firstname" placeholder="first name" class="first-name" />
+    <input type="text" id="lastname" placeholder="last name"/>
+    <input type="text" id="email" placeholder="email"/>
+    <input type="password" id="password" onkeyup="buttonSuccess()" placeholder="password"/>
+    <input type="image" src="img/create-account.svg" name="submit" disabled value="Creat Account" id="register" class="create-account-button"/>
+    <p class="registration-text" id="registration-text"></p>
     </div>
-    
+    </form>
+    </main>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
@@ -65,7 +56,6 @@
       firebase.initializeApp(firebaseConfig);
     </script>
 
-    <script src="./js/register.js">
-    </script>
+    <script src="./js/register.js"></script>
   </body>
 </html>

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (user) {
         firebase.auth().signOut();
       }else{
-        window.location = "login.html";  
+        window.location = "index.html";  
       }
     });
   });

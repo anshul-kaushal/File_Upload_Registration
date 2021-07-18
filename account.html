@@ -4,33 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/account.css">
+    <script src="https://kit.fontawesome.com/c4dd932847.js" crossorigin="anonymous"></script>
     <title>Account</title>
-    <style>
-      .nav {
-        display: flex;
-        list-style: none;
-      }
-      li {
-        margin: 4px;
-      }
-    </style>
   </head>
   <body>
-    <nav>
-      <ul class="nav">
+  <main class="main-body">
+    <nav class="nav">
+      <div class="nav-greeting">image uploader</div>
+      <a href="#" class="toggle" id="toggle-account">
+        <i class="fas fa-bars"></i>
+      </a>
+      <div class="nav-links" id="nav-links-account">
+      <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="account.html">Account</a></li>
         <li><a href="logout.html">Logout</a></li>
       </ul>
+      </div>
     </nav>
-    <h1>Account</h1>
-    First Name:
+    <form class="account">
+    <label for="firstname" class="account-labels">
+    First Name
+    </label>
     <input type="text" id="firstname" />
-    <br /><br />
-    Last Name:
-    <input type="text" id="lastname" />
-    <br /><br />
-    <input type="submit" value="Update" id="update" />
+    <label for="lastname" class="account-labels">
+    Last Name
+    </label>
+    <input type="text" id="lastname" onkeyup="buttonSuccess()"/>
+    <input type="image" src="img/update.svg" alt="update account name" name="submit" value="Update" id="update" class="update-button"/>
+    <p class="account-text" id="account-text"></p>
+    </form>
+  </main>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
